@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Portofolio Profesional | Admin & Data Specialist</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com" rel="stylesheet">
+    <style>
+        :root {
+            --navy-dark: #0f172a;
+            --navy-mid: #1e293b;
+            --accent-gold: #b48d56;
+            --accent-light: #d97706;
+            --bg-light: #f1f5f9;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--navy-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: var(--navy-dark);
+            padding: 1.2rem 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            color: var(--white);
+            font-weight: 700;
+            font-size: 1.4rem;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--accent-gold);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: 0.3s;
+            padding: 8px 15px;
+            border-radius: 6px;
+        }
+
+        .nav-links a:hover {
+            color: var(--white);
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 100px 5% 140px;
+            text-align: center;
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+            color: white;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
+        }
+
+        .badge {
+            background: var(--accent-gold);
+            color: white;
+            padding: 6px 18px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: inline-block;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.85;
+            max-width: 700px;
+            margin: 0 auto;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Dashboard Cards Grid */
+        .main-container {
+            max-width: 1100px;
+            margin: -80px auto 60px;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--white);
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-decoration: none;
+            color: inherit;
+            border: 1px solid rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-color: var(--accent-gold);
+        }
+
+        .icon-box {
+            width: 70px;
+            height: 70px;
+            background: var(--bg-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 25px;
+            transition: 0.3s;
+        }
+
+        .card:hover .icon-box {
+            background: var(--navy-dark);
+            color: white;
+        }
+
+        .card h3 {
+            color: var(--navy-dark);
+            margin-bottom: 15px;
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .card p {
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .btn-action {
+            padding: 10px 25px;
+            background: var(--navy-mid);
+            color: white;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .card:hover .btn-action {
+            background: var(--accent-light);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 60px 20px;
+            background: var(--navy-dark);
+            color: #94a3b8;
+        }
+
+        .footer-text {
+            font-size: 0.9rem;
+            max-width: 600px;
+            margin: 0 auto 20px;
+        }
+
+        .copyright {
+            font-size: 0.75rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            display: inline-block;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .nav-links { display: none; } /* Mobile menu simplified */
+            .main-container { margin-top: -50px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="index.html" class="logo">ADMIN<span>EXCEL</span>.PRO</a>
+    <div class="nav-links">
+        <a href="profil.html">Profil</a>
+        <a href="portofolio.html">Portofolio</a>
+        <a href="penawaran.html">Penawaran</a>
+        <a href="interview.html">Interview</a>
+    </div>
+</nav>
+
+<header class="hero">
+    <div class="badge">Sekretaris Desa & Data Expert</div>
+    <h1>Pusat Kendali Karir Online</h1>
+    <p>Mengelola administrasi dan data dengan standar ketelitian birokrasi, kini hadir untuk solusi bisnis digital Anda.</p>
+</header>
+
+<main class="main-container">
+    <!-- Card 1: Profil -->
+    <a href="profil.html" class="card">
+        <div class="icon-box">👤</div>
+        <h3>Profil Profesional</h3>
+        <p>Ringkasan latar belakang kerja sebagai Sekretaris Desa dan penguasaan tools administrasi.</p>
+        <div class="btn-action">Lihat Profil</div>
+    </a>
+
+    <!-- Card 2: Portofolio Excel -->
+    <a href="portofolio.html" class="card">
+        <div class="icon-box">📊</div>
+        <h3>Karya Excel</h3>
+        <p>Demonstrasi pengolahan data menggunakan Pivot Table, Rumus Lanjut, dan Dashboard Interaktif.</p>
+        <div class="btn-action">Lihat Project</div>
+    </a>
+
+    <!-- Card 3: Template Penawaran -->
+    <a href="penawaran.html" class="card">
+        <div class="icon-box">📄</div>
+        <h3>Strategi Bidding</h3>
+        <p>Kumpulan template surat penawaran (Proposal) yang meyakinkan untuk memenangkan proyek online.</p>
+        <div class="btn-action">Pelajari Teknik</div>
+    </a>
+
+    <!-- Card 4: Panduan Interview -->
+    <a href="interview.html" class="card">
+        <div class="icon-box">💬</div>
+        <h3>Tanya Jawab</h3>
+        <p>Persiapan mental dan materi jawaban saat berhadapan dengan calon klien via chat atau video call.</p>
+        <div class="btn-action">Siapkan Diri</div>
+    </a>
+</main>
+
+<footer>
+    <div class="footer-text">
+        "Ketelitian adalah kunci, integritas adalah janji. Siap memberikan layanan administrasi terbaik untuk setiap proyek Anda."
+    </div>
+    <div class="copyright">
+        &copy; 2026 Dashboard Profesional Sekdes. Hak Cipta Dilindungi.
+    </div>
+</footer>
+
+</body>
+</html>
