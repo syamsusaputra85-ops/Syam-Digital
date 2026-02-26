@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Harga Jasa - Admin Profesional</title>
+    <style>
+        :root {
+            --navy: #0f172a;
+            --gold: #b48d56;
+            --light: #f8fafc;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--light);
+            margin: 0;
+            padding: 20px;
+            color: var(--navy);
+        }
+
+        nav {
+            background: var(--navy);
+            padding: 15px;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        nav a { color: white; text-decoration: none; margin: 0 15px; font-weight: bold; font-size: 0.9rem; }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+
+        h1 { text-align: center; color: var(--navy); border-bottom: 3px solid var(--gold); padding-bottom: 10px; }
+
+        .price-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .price-card {
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .price-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .package-name { font-weight: bold; font-size: 1.2rem; color: var(--gold); margin-bottom: 10px; }
+        .price-value { font-size: 1.8rem; font-weight: 700; margin: 15px 0; }
+        .price-value span { font-size: 0.9rem; color: #64748b; }
+
+        .features { list-style: none; padding: 0; text-align: left; font-size: 0.9rem; margin-bottom: 20px; }
+        .features li { margin-bottom: 8px; padding-left: 20px; position: relative; }
+        .features li::before { content: '✓'; position: absolute; left: 0; color: #22c55e; font-weight: bold; }
+
+        .note {
+            background: #fffbeb;
+            border: 1px solid #fef3c7;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 30px;
+            font-size: 0.85rem;
+            color: #92400e;
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="index.html">BERANDA</a>
+    <a href="profil.html">PROFIL</a>
+    <a href="portofolio.html">PORTOFOLIO</a>
+    <a href="hargajasa.html">HARGA JASA</a>
+</nav>
+
+<div class="container">
+    <h1>Daftar Harga Jasa 2026</h1>
+    <p style="text-align: center;">Layanan Administrasi & Pengetikan Profesional Berbasis Akurasi Tinggi.</p>
+
+    <div class="price-grid">
+        <!-- Paket 1 -->
+        <div class="price-card">
+            <div class="package-name">Input Data Basic</div>
+            <div class="price-value">Rp 1.000 <span>/ baris</span></div>
+            <ul class="features">
+                <li>Copy-paste data standar</li>
+                <li>Input ke Excel/Spreadsheet</li>
+                <li>Format tabel rapi</li>
+                <li>Pengecekan duplikasi</li>
+            </ul>
+        </div>
+
+        <!-- Paket 2 -->
+        <div class="price-card" style="background: #fdfcfb; border: 2px solid var(--gold);">
+            <div class="package-name">Retyping (Ketik Ulang)</div>
+            <div class="price-value">Rp 5.000 <span>/ lembar</span></div>
+            <ul class="features">
+                <li>Ketik ulang dari PDF/Foto</li>
+                <li>Format dokumen resmi (.docx)</li>
+                <li>Nol kesalahan ketik (Typo)</li>
+                <li>Termasuk perbaikan tanda baca</li>
+            </ul>
+        </div>
+
+        <!-- Paket 3 -->
+        <div class="price-card">
+            <div class="package-name">Olah Data Excel</div>
+            <div class="price-value">Rp 150rb <span>/ proyek</span></div>
+            <ul class="features">
+                <li>Pembuatan Rumus (VLOOKUP/IF)</li>
+                <li>Pembuatan Pivot Table</li>
+                <li>Laporan Keuangan/Stok</li>
+                <li>Dashboard Sederhana</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="note">
+        <strong>Catatan Khusus:</strong><br>
+        * Harga dapat disesuaikan kembali tergantung tingkat kesulitan dan batas waktu (deadline).<br>
+        * Untuk proyek skala besar (lebih dari 1.000 baris/data), tersedia <strong>Harga Grosir</strong> khusus. Silakan hubungi saya untuk negosiasi.
+    </div>
+</div>
+
+</body>
+</html>
