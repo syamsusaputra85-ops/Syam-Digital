@@ -1,309 +1,195 @@
-html
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Template Penawaran Profesional Sekdes</title>
+    <title>Profil Profesional | Syamsuddin</title>
+    <link href="https://fonts.googleapis.com" rel="stylesheet">
     <style>
         :root {
-            --primary: #1a5f7a;
-            --secondary: #159895;
-            --light: #f0f9ff;
-            --dark: #2c3e50;
-            --success: #27ae60;
+            --navy: #0f172a;
+            --gold: #b48d56;
+            --slate: #64748b;
+            --bg: #f8fafc;
+            --white: #ffffff;
         }
 
         body {
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: #e5e7eb;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg);
+            margin: 0;
+            padding: 0;
+            color: var(--navy);
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: var(--navy);
+            padding: 1rem 5%;
             display: flex;
             justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            padding: 20px;
+            gap: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
-        .card {
-            background: white;
-            width: 100%;
-            max-width: 650px;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            overflow: hidden;
-            border: 1px solid #d1d5db;
+        nav a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            padding: 8px 15px;
+            transition: 0.3s;
         }
 
-        .card-header {
-            background: var(--primary);
-            color: white;
-            padding: 20px;
-            text-align: center;
+        nav a:hover { color: var(--white); background: rgba(255,255,255,0.1); border-radius: 5px; }
+
+        /* Profile Header Card */
+        .profile-container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 0 20px;
         }
 
-        .card-header h2 {
-            margin: 0;
-            font-size: 1.4rem;
-            letter-spacing: 1px;
-        }
-
-        .card-body {
-            padding: 30px;
-        }
-
-        .template-box {
-            background: var(--light);
-            border-left: 4px solid var(--secondary);
-            padding: 20px;
-            margin-bottom: 20px;
-            position: relative;
-        }
-
-        .template-text {
-            color: var(--dark);
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin: 0;
-            white-space: pre-line;
-        }
-
-        .highlight {
-            color: #d35400;
-            font-weight: bold;
-            background: #fff3e0;
-            padding: 2px 5px;
-            border-radius: 3px;
-        }
-
-        .instruction {
-            font-size: 0.85rem;
-            color: #666;
-            margin-top: 15px;
+        .header-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px;
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-top: 6px solid var(--gold);
         }
 
-        .copy-btn {
-            display: block;
-            width: 100%;
-            background: var(--success);
-            color: white;
-            text-align: center;
-            padding: 12px;
-            text-decoration: none;
-            border-radius: 6px;
-            font-weight: bold;
-            transition: 0.3s;
-            border: none;
-            cursor: pointer;
-        }
-
-        .copy-btn:hover {
-            background: #219150;
-            transform: translateY(-2px);
-        }
-
-        .badge {
-            display: inline-block;
-            background: #e8f5e9;
-            color: #2e7d32;
-            padding: 4px 12px;
+        .profile-img-box {
+            flex-shrink: 0;
+            width: 200px;
+            height: 200px;
             border-radius: 20px;
+            overflow: hidden;
+            border: 4px solid var(--bg);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .profile-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .info-box h1 {
+            margin: 0;
+            font-size: 2.2rem;
+            color: var(--navy);
+        }
+
+        .tagline {
+            color: var(--gold);
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin: 5px 0 15px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            font-size: 0.9rem;
+            color: var(--slate);
+        }
+
+        .contact-item { display: flex; align-items: center; gap: 8px; }
+
+        /* Main Bio Section */
+        .bio-section {
+            background: var(--white);
+            margin-top: 30px;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            border-left: 5px solid var(--gold);
+            padding-left: 15px;
+            margin-bottom: 20px;
+        }
+
+        .bio-text {
+            line-height: 1.8;
+            font-size: 1.05rem;
+            color: #475569;
+            text-align: justify;
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .skill-badge {
+            background: var(--navy);
+            color: white;
+            padding: 6px 15px;
+            border-radius: 50px;
             font-size: 0.8rem;
-            font-weight: bold;
-            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        /* Footer Responsive */
+        @media (max-width: 768px) {
+            .header-card { flex-direction: column; text-align: center; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .contact-item { justify-content: center; }
         }
     </style>
 </head>
 <body>
 
-<div class="card">
-    <div class="card-header">
-        <h2>Draf Penawaran (Bidding) Proyek</h2>
+<nav>
+    <a href="index.html">BERANDA</a>
+    <a href="profil.html">PROFIL</a>
+    <a href="portofolio.html">PORTOFOLIO</a>
+    <a href="hargajasa.html">HARGA JASA</a>
+</nav>
+
+<div class="profile-container">
+    <!-- Header Identitas -->
+    <div class="header-card">
+        <div class="profile-img-box">
+            <!-- Ganti dengan foto asli Anda -->
+            <img src="foto-profil-syamsuddin.png" alt="Foto Pak Syamsuddin">
+        </div>
+        <div class="info-box">
+            <h1>Syamsuddin</h1>
+            <p class="tagline">Sekretaris Desa & Ahli Administrasi Data</p>
+            
+            <div class="contact-grid">
+                <div class="contact-item">📍 Indonesia</div>
+                <div class="contact-item">📧 syam.admin@email.com</div> <!-- Ganti Email Anda -->
+                <div class="contact-item">💼 5+ Tahun Pengalaman</div>
+                <div class="contact-item">✅ Terverifikasi Netlify</div>
+            </div>
+
+            <div class="skills-container">
+                <span class="skill-badge">Microsoft Excel Expert</span>
+                <span class="skill-badge">Data Entry Specialist</span>
+                <span class="skill-badge">Administrative Support</span>
+            </div>
+        </div>
     </div>
-    
-    <div class="card-body">
-        <div class="badge">Siap Salin (Copy-Paste)</div>
-        
-        <div class="template-box">
-            <p class="template-text">
-"Halo, perkenalkan saya <span class="highlight">SYAMSUDDIN</span>. 
 
-Saya memiliki latar belakang profesional sebagai Sekretaris Desa yang setiap hari mengolah database kependudukan dan laporan keuangan secara teliti di Excel. 
-
-Saya melihat Anda butuh bantuan untuk <span class="highlight">[Sebutkan Pekerjaan Klien]</span>. Saya menjamin hasil kerja yang rapi, akurat, dan selesai tepat waktu. 
-
-Saya siap mulai mengerjakan sampel kecil jika Anda berkenan. Terima kasih."
-            </p>
+    <!-- Ringkasan Profesional -->
+    <div class="bio-section">
+        <h2>Tentang Saya</h2>
+        <div class="bio-text">
+            "Saya adalah seorang Sekretaris Desa yang memiliki dedikasi tinggi terhadap akurasi data dan kerapihan administrasi. Dengan pengalaman bertahun-tahun mengelola database kependudukan dan pelaporan keuangan pemerintahan, saya menjamin setiap pekerjaan input data dan retyping dilakukan dengan standar nol kesalahan (zero-error). 
+            <br><br>
+            Keahlian utama saya mencakup pengolahan data kompleks di Microsoft Excel menggunakan rumus fungsi canggih hingga pembuatan dashboard laporan yang sistematis. Integritas dan ketepatan waktu adalah komitmen utama saya dalam melayani kebutuhan bisnis Anda."
         </div>
-
-        <div class="instruction">
-            <span>💡</span> <i>Ganti teks berwarna oranye sesuai dengan nama Anda dan detail pekerjaan klien sebelum dikirim.</i>
-        </div>
-
-        <hr style="margin: 25px 0; border: 0; border-top: 1px solid #eee;">
-        
-        <button class="copy-btn" onclick="alert('Teks berhasil disalin! Pastikan mengganti bagian di dalam kurung sebelum mengirim.')">
-            Gunakan Template Ini
-        </button>
-    </div>
-</div>
-
-</body>
-</html>
-<br>
-html
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Template Penawaran Profesional Sekdes</title>
-    <style>
-        :root {
-            --primary: #1a5f7a;
-            --secondary: #159895;
-            --light: #f0f9ff;
-            --dark: #2c3e50;
-            --success: #27ae60;
-        }
-
-        body {
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: #e5e7eb;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            padding: 20px;
-        }
-
-        .card {
-            background: white;
-            width: 100%;
-            max-width: 650px;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            overflow: hidden;
-            border: 1px solid #d1d5db;
-        }
-
-        .card-header {
-            background: var(--primary);
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .card-header h2 {
-            margin: 0;
-            font-size: 1.4rem;
-            letter-spacing: 1px;
-        }
-
-        .card-body {
-            padding: 30px;
-        }
-
-        .template-box {
-            background: var(--light);
-            border-left: 4px solid var(--secondary);
-            padding: 20px;
-            margin-bottom: 20px;
-            position: relative;
-        }
-
-        .template-text {
-            color: var(--dark);
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin: 0;
-            white-space: pre-line;
-        }
-
-        .highlight {
-            color: #d35400;
-            font-weight: bold;
-            background: #fff3e0;
-            padding: 2px 5px;
-            border-radius: 3px;
-        }
-
-        .instruction {
-            font-size: 0.85rem;
-            color: #666;
-            margin-top: 15px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .copy-btn {
-            display: block;
-            width: 100%;
-            background: var(--success);
-            color: white;
-            text-align: center;
-            padding: 12px;
-            text-decoration: none;
-            border-radius: 6px;
-            font-weight: bold;
-            transition: 0.3s;
-            border: none;
-            cursor: pointer;
-        }
-
-        .copy-btn:hover {
-            background: #219150;
-            transform: translateY(-2px);
-        }
-
-        .badge {
-            display: inline-block;
-            background: #e8f5e9;
-            color: #2e7d32;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-    </style>
-</head>
-<body>
-
-<div class="card">
-    <div class="card-header">
-        <h2>Draf Penawaran (Bidding) Proyek</h2>
-    </div>
-    
-    <div class="card-body">
-        <div class="badge">Siap Salin (Copy-Paste)</div>
-        
-        <div class="template-box">
-            <p class="template-text">
-"Halo, perkenalkan saya <span class="highlight">SYAMSUDDIN</span>. 
-
-Saya memiliki latar belakang profesional sebagai Sekretaris Desa yang setiap hari mengolah database kependudukan dan laporan keuangan secara teliti di Excel. 
-
-Saya melihat Anda butuh bantuan untuk <span class="highlight">[Sebutkan Pekerjaan Klien]</span>. Saya menjamin hasil kerja yang rapi, akurat, dan selesai tepat waktu. 
-
-Saya siap mulai mengerjakan sampel kecil jika Anda berkenan. Terima kasih."
-            </p>
-        </div>
-
-        <div class="instruction">
-            <span>💡</span> <i>Ganti teks berwarna oranye sesuai dengan nama Anda dan detail pekerjaan klien sebelum dikirim.</i>
-        </div>
-
-        <hr style="margin: 25px 0; border: 0; border-top: 1px solid #eee;">
-        
-        <button class="copy-btn" onclick="alert('Teks berhasil disalin! Pastikan mengganti bagian di dalam kurung sebelum mengirim.')">
-            Gunakan Template Ini
-        </button>
     </div>
 </div>
 
