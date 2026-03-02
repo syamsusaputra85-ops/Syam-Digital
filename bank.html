@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="id" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bank Kalbar</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .dropdown:hover .dropdown-menu { display: block; }
+    .dropdown-menu { display: none; }
+    .submenu:hover .submenu-content { display: block; }
+    .submenu-content { display: none; }
+    .tab-btn.active { border-bottom: 3px solid #1e40af; color: #1e40af; background: #eff6ff; }
+    .sidebar-item:hover { background: #f0f9ff; }
+    .sidebar-item.active { background: #dbeafe; border-left: 4px solid #1e40af; }
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full bg-gray-50">
+  <div class="h-full w-full flex flex-col overflow-auto"><!-- Top Bar -->
+   <div class="bg-blue-900 text-white text-sm py-2 px-4">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+     <div class="flex items-center gap-4"><span>📞 (0561) 732166</span> <span>📧 callcenter@bankkalbar.co.id</span>
+     </div>
+     <div class="flex items-center gap-3"><a href="#" class="hover:text-blue-200">🔵</a> <a href="#" class="hover:text-blue-200">📘</a> <a href="#" class="hover:text-blue-200">📸</a>
+     </div>
+    </div>
+   </div><!-- Header -->
+   <header class="bg-white shadow-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4">
+     <div class="flex items-center justify-between py-3"><!-- Logo -->
+      <div class="flex items-center gap-3">
+       <div class="w-12 h-12 bg-gradient-to-br from-blue-600 to-blue-800 rounded-lg flex items-center justify-center"><span class="text-white font-bold text-lg">BK</span>
+       </div>
+       <div>
+        <h1 id="bank-name" class="text-xl font-bold text-blue-900">Bank Kalbar</h1>
+        <p id="tagline" class="text-xs text-gray-500">Bank Pembangunan Daerah Kalimantan Barat</p>
+       </div>
+      </div><!-- Navigation -->
+      <nav class="hidden lg:flex items-center gap-1"><!-- Home --> <a href="#" class="px-4 py-2 text-gray-700 hover:text-blue-600 font-medium">Home</a> <!-- Tentang Kami -->
+       <div class="dropdown relative"><button class="px-4 py-2 text-gray-700 hover:text-blue-600 font-medium flex items-center gap-1"> Tentang Kami <span class="text-xs">▼</span> </button>
+        <div class="dropdown-menu absolute top-full left-0 bg-white shadow-lg rounded-lg py-2 min-w-[200px]"><a href="#" class="block px-4 py-2 hover:bg-blue-50 text-gray-700">Sekilas Perusahaan</a> <a href="#" class="block px-4 py-2 hover:bg-blue-50 text-gray-700">Visi &amp; Misi</a> <a href="#" class="block px-4 py-2 hover:bg-blue-50 text-gray-700">Nilai-Nilai Dasar</a> <a href="#" class="block px-4 py-2 hover:bg-blue-50 text-gray-700">Jajaran Manajemen</a> <a href="#" class="block px-4 py-2 hover:bg-blue-50 text-gray-700">Struktur Organisasi</a> <a href="#" class="block px-4 py-2 hover:bg-blue-50 text-gray-700">Hubungi Kami</a>
+        </div>
+       </div><!-- Produk & Jasa -->
+       <div class="dropdown relative"><button class="px-4 py-2 text-gray-700 hover:text-blue-600 font-medium flex items-center gap-1"> Produk &amp; Jasa <span class="text-xs">▼</span> </button>
+        <div class="dropdown-menu absolute top-full left-0 bg-white shadow-lg rounded-lg py-2 min-w-[200px]"><a href="#" onclick="showProduct('simpanan')" class="block px-4 py-2 hover:bg-blue-50 text-gray-700">Simpanan</a> <a href="#" onclick="showProduct('pinjaman')" class="block px-4 py-2 hover:bg-blue-50 text-gray-700">Pinjaman</a> <a href="#" class="block px-4 py-2 hover:bg-blue-50 text-gray-700">Jasa Perbankan Lainnya</a>
+        </div>
+       </div><!-- Hubungan Investor -->
+       <div class="dropdown relative"><button class="px-4 py-2 text-gray-700 hover:text-blue-600 font-medium flex items-center gap-1"> Hubungan Investor <span class="text-xs">▼</span> </button>
+        <div class="dropdown-menu absolute top-full left-0 bg-white shadow-lg rounded-lg py-2 min-w-[280px]"><a href="#" class="block px-4 py-2 hover:bg-blue-50 text-gray-700">Kepemilikan Saham</a> <a href="#" class="block px-4 py-2 hover:bg-blue-50 text-gray-700">Laporan Tahunan dan Keberlanjutan</a> <a href="#" class="block px-4 py-2 hover:bg-blue-50 text-gray-700">Laporan Keuangan</a> <a href="#" class="block px-4 py-2 hover:bg-blue-50 text-gray-700">Laporan Pelaksanaan Tata Kelola</a> <a href="#" class="block px-4 py-2 hover:bg-blue-50 text-gray-700">Rasio Pengungkit</a> <a href="#" class="block px-4 py-2 hover:bg-blue-50 text-gray-700">Rasio LCR dan NSFR</a> <a href="#" class="block px-4 py-2 hover:bg-blue-50 text-gray-700">Laporan Eksposur Risiko &amp; Permodalan</a>
+        </div>
+       </div><!-- Informasi -->
+       <div class="dropdown relative"><button class="px-4 py-2 text-gray-700 hover:text-blue-600 font-medium flex items-center gap-1"> Informasi <span class="text-xs">▼</span> </button>
+        <div class="dropdown-menu absolute top-full right-0 bg-white shadow-lg rounded-lg py-2 min-w-[220px]"><a href="#" class="block px-4 py-2 hover:bg-blue-50 text-gray-700">Unit Usaha Syariah</a> <a href="#" class="block px-4 py-2 hover:bg-blue-50 text-gray-700">Cash Management System</a> <a href="#" class="block px-4 py-2 hover:bg-blue-50 text-gray-700">SBDK</a> <a href="#" class="block px-4 py-2 hover:bg-blue-50 text-gray-700">Jaringan Kantor</a> <a href="#" class="block px-4 py-2 hover:bg-blue-50 text-gray-700">Lokasi ATM</a> <a href="#" class="block px-4 py-2 hover:bg-blue-50 text-gray-700">Lokasi CRM</a> <a href="#" class="block px-4 py-2 hover:bg-blue-50 text-gray-700">Suku Bunga</a> <a href="#" class="block px-4 py-2 hover:bg-blue-50 text-gray-700">Karir/Rekrutmen</a> <a href="#" class="block px-4 py-2 hover:bg-blue-50 text-gray-700">Eproc Bank Kalbar</a> <a href="#" class="block px-4 py-2 hover:bg-blue-50 text-gray-700">Kebijakan Privasi</a> <a href="#" class="block px-4 py-2 hover:bg-blue-50 text-gray-700">Pengaduan Nasabah</a>
+        </div>
+       </div><!-- Agunan yang Dijual -->
+       <div class="dropdown relative"><button class="px-4 py-2 text-gray-700 hover:text-blue-600 font-medium flex items-center gap-1"> Agunan <span class="text-xs">▼</span> </button>
+        <div class="dropdown-menu absolute top-full right-0 bg-white shadow-lg rounded-lg py-2 min-w-[180px]"><a href="#" class="block px-4 py-2 hover:bg-blue-50 text-gray-700">Agunan Lelang</a> <a href="#" class="block px-4 py-2 hover:bg-blue-50 text-gray-700">Agunan Non Lelang</a>
+        </div>
+       </div><!-- Whistleblower --> <a href="#" class="px-4 py-2 text-gray-700 hover:text-blue-600 font-medium">Whistleblower</a>
+      </nav><!-- Mobile Menu Button --> <button id="mobile-menu-btn" class="lg:hidden p-2 text-gray-700">
+       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+       </svg></button>
+     </div>
+    </div>
+   </header><!-- Breadcrumb -->
+   <div class="bg-gradient-to-r from-blue-800 to-blue-600 text-white py-8">
+    <div class="max-w-7xl mx-auto px-4">
+     <div class="flex items-center gap-2 text-sm mb-2"><a href="#" class="hover:underline">Home</a> <span>›</span> <a href="#" class="hover:underline">Produk &amp; Jasa</a> <span>›</span> <a href="#" class="hover:underline">Simpanan</a> <span>›</span> <span class="font-semibold">Giro</span>
+     </div>
+     <h2 class="text-3xl font-bold">GIRO</h2>
+    </div>
+   </div><!-- Main Content -->
+   <main class="flex-1 max-w-7xl mx-auto px-4 py-8 w-full">
+    <div class="flex flex-col lg:flex-row gap-8"><!-- Sidebar -->
+     <aside class="lg:w-72 flex-shrink-0">
+      <div class="bg-white rounded-xl shadow-lg overflow-hidden"><!-- Simpanan Section -->
+       <div class="border-b"><button onclick="toggleSection('simpanan-list')" class="w-full px-4 py-3 bg-blue-800 text-white font-semibold text-left flex justify-between items-center"> <span>📁 Simpanan</span> <span id="simpanan-arrow">▼</span> </button>
+        <div id="simpanan-list" class="bg-gray-50"><a href="#" onclick="selectProduct('giro')" class="sidebar-item active block px-6 py-2.5 text-gray-700 border-b border-gray-100" data-product="giro">Giro</a> <a href="#" onclick="selectProduct('simpeda')" class="sidebar-item block px-6 py-2.5 text-gray-700 border-b border-gray-100" data-product="simpeda">Simpeda</a> <a href="#" onclick="selectProduct('taserna')" class="sidebar-item block px-6 py-2.5 text-gray-700 border-b border-gray-100" data-product="taserna">Taserna</a> <a href="#" onclick="selectProduct('tabunganku')" class="sidebar-item block px-6 py-2.5 text-gray-700 border-b border-gray-100" data-product="tabunganku">TabunganKu</a> <a href="#" onclick="selectProduct('tabungan-bekal')" class="sidebar-item block px-6 py-2.5 text-gray-700 border-b border-gray-100" data-product="tabungan-bekal">Tabungan Bekal</a> <a href="#" onclick="selectProduct('tabungan-siswa')" class="sidebar-item block px-6 py-2.5 text-gray-700 border-b border-gray-100" data-product="tabungan-siswa">Tabungan Siswa</a> <a href="#" onclick="selectProduct('tabungan-simpel')" class="sidebar-item block px-6 py-2.5 text-gray-700 border-b border-gray-100" data-product="tabungan-simpel">Tabungan Simpel</a> <a href="#" onclick="selectProduct('profita')" class="sidebar-item block px-6 py-2.5 text-gray-700 border-b border-gray-100" data-product="profita">Profita</a> <a href="#" onclick="selectProduct('deposito')" class="sidebar-item block px-6 py-2.5 text-gray-700" data-product="deposito">Deposito</a>
+        </div>
+       </div><!-- Pinjaman Section -->
+       <div class="border-b"><button onclick="toggleSection('pinjaman-list')" class="w-full px-4 py-3 bg-blue-700 text-white font-semibold text-left flex justify-between items-center"> <span>📁 Pinjaman</span> <span id="pinjaman-arrow">▶</span> </button>
+        <div id="pinjaman-list" class="bg-gray-50 hidden"><a href="#" class="sidebar-item block px-6 py-2.5 text-gray-700 border-b border-gray-100">Kredit Konsumtif</a> <a href="#" class="sidebar-item block px-6 py-2.5 text-gray-700 border-b border-gray-100">Kredit Modal Kerja</a> <a href="#" class="sidebar-item block px-6 py-2.5 text-gray-700 border-b border-gray-100">Kredit Investasi</a> <a href="#" class="sidebar-item block px-6 py-2.5 text-gray-700">KPR</a>
+        </div>
+       </div><!-- Jasa Perbankan Lainnya -->
+       <div><button onclick="toggleSection('jasa-list')" class="w-full px-4 py-3 bg-blue-600 text-white font-semibold text-left flex justify-between items-center"> <span>📁 Jasa Perbankan Lainnya</span> <span id="jasa-arrow">▶</span> </button>
+        <div id="jasa-list" class="bg-gray-50 hidden"><a href="#" class="sidebar-item block px-6 py-2.5 text-gray-700 border-b border-gray-100">Transfer</a> <a href="#" class="sidebar-item block px-6 py-2.5 text-gray-700 border-b border-gray-100">Kliring</a> <a href="#" class="sidebar-item block px-6 py-2.5 text-gray-700 border-b border-gray-100">RTGS</a> <a href="#" class="sidebar-item block px-6 py-2.5 text-gray-700">Safe Deposit Box</a>
+        </div>
+       </div>
+      </div>
+     </aside><!-- Content Area -->
+     <div class="flex-1">
+      <div class="bg-white rounded-xl shadow-lg overflow-hidden"><!-- Product Header -->
+       <div class="bg-gradient-to-r from-blue-700 to-blue-500 p-6 text-white">
+        <div class="flex items-center gap-4">
+         <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center">
+          <svg class="w-8 h-8" fill="currentColor" viewbox="0 0 24 24"><path d="M21 18v1c0 1.1-.9 2-2 2H5c-1.11 0-2-.9-2-2V5c0-1.1.89-2 2-2h14c1.1 0 2 .9 2 2v1h-9c-1.11 0-2 .9-2 2v8c0 1.1.89 2 2 2h9zm-9-2h10V8H12v8zm4-2.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z" />
+          </svg>
+         </div>
+         <div>
+          <h3 id="product-title" class="text-2xl font-bold">GIRO</h3>
+          <p class="text-blue-100">Simpanan Nasabah</p>
+         </div>
+        </div>
+       </div><!-- Product Description -->
+       <div class="p-6 border-b">
+        <p id="product-description" class="text-gray-600 leading-relaxed">Giro merupakan produk dana yang diterbitkan oleh Bank Kalbar. Giro adalah simpanan dari pihak ketiga pada Bank yang penarikannya dapat dilakukan setiap saat dengan mempergunakan Cek/Bilyet Giro atau dengan cara pemindahbukuan.</p>
+       </div><!-- Tabs -->
+       <div class="border-b overflow-x-auto">
+        <div class="flex min-w-max"><button onclick="showTab('fitur')" class="tab-btn active px-6 py-4 font-medium text-gray-600 hover:text-blue-600 transition-all whitespace-nowrap" data-tab="fitur"> Fitur Utama </button> <button onclick="showTab('manfaat')" class="tab-btn px-6 py-4 font-medium text-gray-600 hover:text-blue-600 transition-all whitespace-nowrap" data-tab="manfaat"> Manfaat </button> <button onclick="showTab('risiko')" class="tab-btn px-6 py-4 font-medium text-gray-600 hover:text-blue-600 transition-all whitespace-nowrap" data-tab="risiko"> Risiko </button> <button onclick="showTab('persyaratan')" class="tab-btn px-6 py-4 font-medium text-gray-600 hover:text-blue-600 transition-all whitespace-nowrap" data-tab="persyaratan"> Persyaratan &amp; Tata Cara </button> <button onclick="showTab('biaya')" class="tab-btn px-6 py-4 font-medium text-gray-600 hover:text-blue-600 transition-all whitespace-nowrap" data-tab="biaya"> Biaya </button> <button onclick="showTab('informasi')" class="tab-btn px-6 py-4 font-medium text-gray-600 hover:text-blue-600 transition-all whitespace-nowrap" data-tab="informasi"> Informasi Tambahan </button>
+        </div>
+       </div><!-- Tab Content -->
+       <div class="p-6"><!-- Fitur Utama -->
+        <div id="tab-fitur" class="tab-content">
+         <h4 class="text-lg font-semibold text-gray-800 mb-4">Fitur Utama Giro</h4>
+         <ul class="space-y-3">
+          <li class="flex items-start gap-3"><span class="w-6 h-6 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">✓</span> <span class="text-gray-600">Penarikan dapat dilakukan setiap saat menggunakan Cek atau Bilyet Giro</span></li>
+          <li class="flex items-start gap-3"><span class="w-6 h-6 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">✓</span> <span class="text-gray-600">Dapat digunakan untuk keperluan transaksi bisnis</span></li>
+          <li class="flex items-start gap-3"><span class="w-6 h-6 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">✓</span> <span class="text-gray-600">Pemindahbukuan antar rekening dengan mudah</span></li>
+          <li class="flex items-start gap-3"><span class="w-6 h-6 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">✓</span> <span class="text-gray-600">Tersedia dalam mata uang Rupiah</span></li>
+          <li class="flex items-start gap-3"><span class="w-6 h-6 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">✓</span> <span class="text-gray-600">Mendapatkan buku cek dan bilyet giro</span></li>
+         </ul>
+        </div><!-- Manfaat -->
+        <div id="tab-manfaat" class="tab-content hidden">
+         <h4 class="text-lg font-semibold text-gray-800 mb-4">Manfaat Giro</h4>
+         <div class="grid md:grid-cols-2 gap-4">
+          <div class="bg-blue-50 p-4 rounded-lg">
+           <div class="text-blue-600 text-2xl mb-2">
+            💼
+           </div>
+           <h5 class="font-semibold text-gray-800 mb-1">Transaksi Bisnis</h5>
+           <p class="text-sm text-gray-600">Memudahkan transaksi bisnis dengan mitra usaha</p>
+          </div>
+          <div class="bg-green-50 p-4 rounded-lg">
+           <div class="text-green-600 text-2xl mb-2">
+            ⚡
+           </div>
+           <h5 class="font-semibold text-gray-800 mb-1">Fleksibel</h5>
+           <p class="text-sm text-gray-600">Penarikan dapat dilakukan kapan saja</p>
+          </div>
+          <div class="bg-purple-50 p-4 rounded-lg">
+           <div class="text-purple-600 text-2xl mb-2">
+            🔒
+           </div>
+           <h5 class="font-semibold text-gray-800 mb-1">Aman</h5>
+           <p class="text-sm text-gray-600">Dana terjamin keamanannya oleh LPS</p>
+          </div>
+          <div class="bg-orange-50 p-4 rounded-lg">
+           <div class="text-orange-600 text-2xl mb-2">
+            📊
+           </div>
+           <h5 class="font-semibold text-gray-800 mb-1">Pencatatan</h5>
+           <p class="text-sm text-gray-600">Laporan transaksi terperinci setiap bulan</p>
+          </div>
+         </div>
+        </div><!-- Risiko -->
+        <div id="tab-risiko" class="tab-content hidden">
+         <h4 class="text-lg font-semibold text-gray-800 mb-4">Risiko</h4>
+         <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-r-lg">
+          <div class="flex items-start gap-3"><span class="text-yellow-600 text-xl">⚠️</span>
+           <div>
+            <h5 class="font-semibold text-gray-800 mb-2">Hal yang Perlu Diperhatikan</h5>
+            <ul class="space-y-2 text-gray-600 text-sm">
+             <li>• Jaga kerahasiaan buku cek dan bilyet giro</li>
+             <li>• Pastikan saldo mencukupi sebelum menerbitkan cek</li>
+             <li>• Segera laporkan jika buku cek hilang atau dicuri</li>
+             <li>• Perhatikan masa berlaku cek dan bilyet giro</li>
+            </ul>
+           </div>
+          </div>
+         </div>
+        </div><!-- Persyaratan -->
+        <div id="tab-persyaratan" class="tab-content hidden">
+         <h4 class="text-lg font-semibold text-gray-800 mb-4">Persyaratan &amp; Tata Cara</h4>
+         <div class="mb-6">
+          <h5 class="font-semibold text-gray-700 mb-3">Persyaratan Perorangan:</h5>
+          <ul class="space-y-2 text-gray-600">
+           <li class="flex items-center gap-2"><span class="w-2 h-2 bg-blue-500 rounded-full"></span> KTP / SIM / Paspor yang masih berlaku</li>
+           <li class="flex items-center gap-2"><span class="w-2 h-2 bg-blue-500 rounded-full"></span> NPWP (untuk setoran awal di atas Rp 50.000.000)</li>
+           <li class="flex items-center gap-2"><span class="w-2 h-2 bg-blue-500 rounded-full"></span> Setoran awal minimal Rp 1.000.000</li>
+          </ul>
+         </div>
+         <div class="mb-6">
+          <h5 class="font-semibold text-gray-700 mb-3">Persyaratan Badan Usaha:</h5>
+          <ul class="space-y-2 text-gray-600">
+           <li class="flex items-center gap-2"><span class="w-2 h-2 bg-blue-500 rounded-full"></span> Akta Pendirian Perusahaan</li>
+           <li class="flex items-center gap-2"><span class="w-2 h-2 bg-blue-500 rounded-full"></span> SIUP / TDP / NIB</li>
+           <li class="flex items-center gap-2"><span class="w-2 h-2 bg-blue-500 rounded-full"></span> NPWP Perusahaan</li>
+           <li class="flex items-center gap-2"><span class="w-2 h-2 bg-blue-500 rounded-full"></span> KTP Pengurus yang berwenang</li>
+          </ul>
+         </div>
+         <div class="bg-blue-50 p-4 rounded-lg">
+          <h5 class="font-semibold text-gray-700 mb-2">Tata Cara Pembukaan:</h5>
+          <ol class="list-decimal list-inside space-y-1 text-gray-600 text-sm">
+           <li>Kunjungi kantor cabang Bank Kalbar terdekat</li>
+           <li>Isi formulir pembukaan rekening giro</li>
+           <li>Serahkan dokumen persyaratan</li>
+           <li>Lakukan setoran awal</li>
+           <li>Terima buku cek dan bilyet giro</li>
+          </ol>
+         </div>
+        </div><!-- Biaya -->
+        <div id="tab-biaya" class="tab-content hidden">
+         <h4 class="text-lg font-semibold text-gray-800 mb-4">Biaya</h4>
+         <div class="overflow-x-auto">
+          <table class="w-full border-collapse">
+           <thead>
+            <tr class="bg-blue-800 text-white">
+             <th class="px-4 py-3 text-left">Jenis Biaya</th>
+             <th class="px-4 py-3 text-right">Nominal</th>
+            </tr>
+           </thead>
+           <tbody>
+            <tr class="border-b">
+             <td class="px-4 py-3 text-gray-700">Setoran Awal</td>
+             <td class="px-4 py-3 text-right text-gray-700">Rp 1.000.000</td>
+            </tr>
+            <tr class="border-b bg-gray-50">
+             <td class="px-4 py-3 text-gray-700">Saldo Minimum</td>
+             <td class="px-4 py-3 text-right text-gray-700">Rp 500.000</td>
+            </tr>
+            <tr class="border-b">
+             <td class="px-4 py-3 text-gray-700">Biaya Administrasi per Bulan</td>
+             <td class="px-4 py-3 text-right text-gray-700">Rp 15.000</td>
+            </tr>
+            <tr class="border-b bg-gray-50">
+             <td class="px-4 py-3 text-gray-700">Biaya Buku Cek</td>
+             <td class="px-4 py-3 text-right text-gray-700">Rp 100.000</td>
+            </tr>
+            <tr class="border-b">
+             <td class="px-4 py-3 text-gray-700">Biaya Bilyet Giro</td>
+             <td class="px-4 py-3 text-right text-gray-700">Rp 100.000</td>
+            </tr>
+            <tr class="bg-gray-50">
+             <td class="px-4 py-3 text-gray-700">Biaya Penutupan Rekening</td>
+             <td class="px-4 py-3 text-right text-gray-700">Rp 50.000</td>
+            </tr>
+           </tbody>
+          </table>
+         </div>
+        </div><!-- Informasi Tambahan -->
+        <div id="tab-informasi" class="tab-content hidden">
+         <h4 class="text-lg font-semibold text-gray-800 mb-4">Informasi Tambahan</h4>
+         <div class="space-y-4">
+          <div class="bg-gray-50 p-4 rounded-lg">
+           <h5 class="font-semibold text-gray-700 mb-2">📞 Layanan Nasabah</h5>
+           <p class="text-gray-600 text-sm">Hubungi Call Center Bank Kalbar di (0561) 732166 untuk informasi lebih lanjut.</p>
+          </div>
+          <div class="bg-gray-50 p-4 rounded-lg">
+           <h5 class="font-semibold text-gray-700 mb-2">🏢 Jaringan Kantor</h5>
+           <p class="text-gray-600 text-sm">Bank Kalbar memiliki jaringan kantor yang tersebar di seluruh Kalimantan Barat.</p>
+          </div>
+          <div class="bg-gray-50 p-4 rounded-lg">
+           <h5 class="font-semibold text-gray-700 mb-2">🔒 Penjaminan LPS</h5>
+           <p class="text-gray-600 text-sm">Simpanan dijamin oleh Lembaga Penjamin Simpanan (LPS) sesuai ketentuan yang berlaku.</p>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </main><!-- Footer -->
+   <footer class="bg-blue-900 text-white mt-auto">
+    <div class="max-w-7xl mx-auto px-4 py-10">
+     <div class="grid md:grid-cols-4 gap-8">
+      <div>
+       <div class="flex items-center gap-3 mb-4">
+        <div class="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center"><span class="font-bold">BK</span>
+        </div><span class="font-bold text-lg">Bank Kalbar</span>
+       </div>
+       <p class="text-blue-200 text-sm">Bank Pembangunan Daerah Kalimantan Barat, melayani dengan sepenuh hati.</p>
+      </div>
+      <div>
+       <h4 class="font-semibold mb-4">Produk</h4>
+       <ul class="space-y-2 text-blue-200 text-sm">
+        <li><a href="#" class="hover:text-white">Simpanan</a></li>
+        <li><a href="#" class="hover:text-white">Pinjaman</a></li>
+        <li><a href="#" class="hover:text-white">Jasa Perbankan</a></li>
+       </ul>
+      </div>
+      <div>
+       <h4 class="font-semibold mb-4">Informasi</h4>
+       <ul class="space-y-2 text-blue-200 text-sm">
+        <li><a href="#" class="hover:text-white">Tentang Kami</a></li>
+        <li><a href="#" class="hover:text-white">Karir</a></li>
+        <li><a href="#" class="hover:text-white">Hubungi Kami</a></li>
+       </ul>
+      </div>
+      <div>
+       <h4 class="font-semibold mb-4">Kontak</h4>
+       <ul class="space-y-2 text-blue-200 text-sm">
+        <li>📍 Jl. Rahadi Osman No. 10, Pontianak</li>
+        <li>📞 (0561) 732166</li>
+        <li>📧 callcenter@bankkalbar.co.id</li>
+       </ul>
+      </div>
+     </div>
+     <div class="border-t border-blue-800 mt-8 pt-6 text-center text-blue-300 text-sm">
+      <p>© 2024 Bank Kalbar. Hak Cipta Dilindungi.</p>
+     </div>
+    </div>
+   </footer>
+  </div>
+  <script>
+    // Default configuration
+    const defaultConfig = {
+      bank_name: 'Bank Kalbar',
+      tagline: 'Bank Pembangunan Daerah Kalimantan Barat',
+      primary_color: '#1e3a8a',
+      secondary_color: '#3b82f6',
+      background_color: '#f9fafb',
+      text_color: '#374151',
+      accent_color: '#1d4ed8',
+      font_family: 'Plus Jakarta Sans',
+      font_size: 16
+    };
+
+    // Tab functionality
+    function showTab(tabName) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+      document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+      
+      document.getElementById('tab-' + tabName).classList.remove('hidden');
+      document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
+    }
+
+    // Toggle sidebar sections
+    function toggleSection(sectionId) {
+      const section = document.getElementById(sectionId);
+      const arrowId = sectionId.replace('-list', '-arrow');
+      const arrow = document.getElementById(arrowId);
+      
+      if (section.classList.contains('hidden')) {
+        section.classList.remove('hidden');
+        arrow.textContent = '▼';
+      } else {
+        section.classList.add('hidden');
+        arrow.textContent = '▶';
+      }
+    }
+
+    // Select product from sidebar
+    function selectProduct(productName) {
+      document.querySelectorAll('.sidebar-item').forEach(el => el.classList.remove('active'));
+      const selected = document.querySelector(`[data-product="${productName}"]`);
+      if (selected) selected.classList.add('active');
+      
+      // Update product title (simplified demo)
+      const titles = {
+        'giro': 'GIRO',
+        'simpeda': 'SIMPEDA',
+        'taserna': 'TASERNA',
+        'tabunganku': 'TabunganKu',
+        'tabungan-bekal': 'Tabungan Bekal',
+        'tabungan-siswa': 'Tabungan Siswa',
+        'tabungan-simpel': 'Tabungan Simpel',
+        'profita': 'PROFITA',
+        'deposito': 'DEPOSITO'
+      };
+      
+      document.getElementById('product-title').textContent = titles[productName] || productName.toUpperCase();
+    }
+
+    // Mobile menu toggle
+    document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+      // Simple mobile menu toggle (can be expanded)
+      const nav = document.querySelector('nav');
+      nav.classList.toggle('hidden');
+      nav.classList.toggle('flex');
+    });
+
+    // Element SDK Integration
+    async function onConfigChange(config) {
+      const bankName = document.getElementById('bank-name');
+      const tagline = document.getElementById('tagline');
+      
+      if (bankName) bankName.textContent = config.bank_name || defaultConfig.bank_name;
+      if (tagline) tagline.textContent = config.tagline || defaultConfig.tagline;
+      
+      // Apply font
+      const fontFamily = config.font_family || defaultConfig.font_family;
+      document.body.style.fontFamily = `${fontFamily}, sans-serif`;
+      
+      // Apply font size
+      const fontSize = config.font_size || defaultConfig.font_size;
+      document.body.style.fontSize = `${fontSize}px`;
+    }
+
+    function mapToCapabilities(config) {
+      return {
+        recolorables: [
+          {
+            get: () => config.background_color || defaultConfig.background_color,
+            set: (value) => {
+              config.background_color = value;
+              window.elementSdk.setConfig({ background_color: value });
+            }
+          },
+          {
+            get: () => config.primary_color || defaultConfig.primary_color,
+            set: (value) => {
+              config.primary_color = value;
+              window.elementSdk.setConfig({ primary_color: value });
+            }
+          },
+          {
+            get: () => config.text_color || defaultConfig.text_color,
+            set: (value) => {
+              config.text_color = value;
+              window.elementSdk.setConfig({ text_color: value });
+            }
+          },
+          {
+            get: () => config.accent_color || defaultConfig.accent_color,
+            set: (value) => {
+              config.accent_color = value;
+              window.elementSdk.setConfig({ accent_color: value });
+            }
+          },
+          {
+            get: () => config.secondary_color || defaultConfig.secondary_color,
+            set: (value) => {
+              config.secondary_color = value;
+              window.elementSdk.setConfig({ secondary_color: value });
+            }
+          }
+        ],
+        borderables: [],
+        fontEditable: {
+          get: () => config.font_family || defaultConfig.font_family,
+          set: (value) => {
+            config.font_family = value;
+            window.elementSdk.setConfig({ font_family: value });
+          }
+        },
+        fontSizeable: {
+          get: () => config.font_size || defaultConfig.font_size,
+          set: (value) => {
+            config.font_size = value;
+            window.elementSdk.setConfig({ font_size: value });
+          }
+        }
+      };
+    }
+
+    function mapToEditPanelValues(config) {
+      return new Map([
+        ['bank_name', config.bank_name || defaultConfig.bank_name],
+        ['tagline', config.tagline || defaultConfig.tagline]
+      ]);
+    }
+
+    // Initialize Element SDK
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    }
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d61276510fced99',t:'MTc3MjQ2MjM5OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
