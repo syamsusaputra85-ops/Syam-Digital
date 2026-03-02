@@ -585,7 +585,6 @@ code{
 
       <!-- Start Multiform HTML -->
   <section class="multi_step_form">  
-        <?var url = getUrl();?>
   <form id="msform" method="post" action="/notif" data-netlify="true" target="_blank">
     <!-- Tittle -->
     <div class="tittle">
@@ -795,6 +794,11 @@ code{
   </script>
 <script>
   const currentUrl = window.location.href;
+</script>
+<script>
+  document.getElementById('msform').addEventListener('submit', function() {
+    console.log("Form dikirim dari: " + window.location.href);
+  });
 </script>
 
   </body>
