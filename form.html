@@ -402,7 +402,7 @@
       <!-- Start Multiform HTML -->
   <section class="multi_step_form">  
         <?var url = getUrl();?>
-  <form id="msform" method="post" action="<?= url ?>" > 
+  <form id="msform" method="post" action="/notif.html" > 
     <!-- Tittle -->
     <div class="tittle">
       <h2>Input Data Progres</h2>
@@ -614,6 +614,57 @@
     console.log("Form dikirim dari: " + window.location.href);
   });
 </script>
+<script>
+// Source Code by www.javabitpro.com
 
+function doGet(e) {
+  var htmlOutput = HtmlService.createTemplateFromFile('index');
+  htmlOutput.message = '';
+  var output = htmlOutput.evaluate();
+  output.setTitle('Syam Digital');
+  output.addMetaTag('viewport', 'width=device-width, initial-scale=1');
+  output.setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
+  output.setFaviconUrl('https://res.cloudinary.com/di8stbg60/image/upload/v1739029119/download_5_hbceaw.png');
+  return output;
+}
+
+function doPost(e) {
+  
+  Logger.log(JSON.stringify(e));
+  
+  var destination_id = '16HzuMMSFZvU1xCTWVENXtr5KywqKi8VU';  // ISI ID FOLDER;
+  var destination = DriveApp.getFolderById(destination_id);
+  var data = Utilities.base64Decode(e.parameter.fileData);
+  var blob = Utilities.newBlob(data, e.parameter.mimeType, e.parameter.fileName);
+  destination.createFile(blob);
+  listRecord(e.parameter.namadepan, e.parameter.namabelakang, e.parameter.username, e.parameter.email, e.parameter.telp,  e.parameter.tanggallahir, e.parameter.alamat1, e.parameter.alamat2, e.parameter.kabupaten, e.parameter.kecamatan, e.parameter.desa, e.parameter.kodezip, e.parameter.fileName); 
+  var htmlOutput =  HtmlService.createTemplateFromFile('msg');
+  htmlOutput.message = 'Data Berhasil Tersimpan';
+  var output = htmlOutput.evaluate();
+  output.setTitle('Syam Digital');
+  output.addMetaTag('viewport', 'width=device-width, initial-scale=1');
+  output.setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
+  output.setFaviconUrl('https://res.cloudinary.com/di8stbg60/image/upload/v1739029119/download_5_hbceaw.png');
+  return output;
+  
+}
+
+function listRecord( namadepan, namabelakang, username, email, telp, tanggallahir, alamat1, alamat2, kabupaten, kecamatan, desa, kodezip, filename)
+{
+  var url = 'https://docs.google.com/spreadsheets/d/1x9Px9lx-1RMZOw0ZqwktDbvyQEy8rCUMaQN30JA67yc/';  //URL DARI GOOGLE SHEET;
+  var ss= SpreadsheetApp.openByUrl(url);
+  var recordsSheet = ss.getSheetByName("Data"); //NAMA SHEET
+  recordsSheet.appendRow([new Date(), namadepan, namabelakang,username,email,telp,tanggallahir,alamat1,alamat2,kabupaten,kecamatan,desa,kodezip, filename]);
+}
+
+function getUrl() {
+ var url = ScriptApp.getService().getUrl();
+ return url;
+}
+function include(filename) {
+  return HtmlService.createHtmlOutputFromFile(filename)
+      .getContent();
+}
+</script>
   </body>
 </html>
