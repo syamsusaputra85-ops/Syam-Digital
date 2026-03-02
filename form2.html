@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="id" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulir Pendaftaran Siswa</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+        * {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100%;
+        }
+        
+        .form-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        .form-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 24px 24px 0 0;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .form-header h1 {
+            color: white;
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin: 0;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-body {
+            padding: 2rem;
+        }
+        
+        .form-row {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 1.25rem;
+        }
+        
+        .form-label {
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+        
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: #f9fafb;
+        }
+        
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            background: white;
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+        }
+        
+        .form-input::placeholder {
+            color: #9ca3af;
+        }
+        
+        .form-textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        .input-group {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+        
+        .input-group .form-input {
+            flex: 1;
+            min-width: 150px;
+        }
+        
+        .radio-group,
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .radio-item,
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.25rem;
+            background: #f3f4f6;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .radio-item:hover,
+        .checkbox-item:hover {
+            background: #e5e7eb;
+        }
+        
+        .radio-item:has(input:checked),
+        .checkbox-item:has(input:checked) {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: transparent;
+        }
+        
+        .radio-item input,
+        .checkbox-item input {
+            width: 18px;
+            height: 18px;
+            accent-color: #667eea;
+        }
+        
+        .file-input-wrapper {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+        
+        .file-input-wrapper input[type="file"] {
+            width: 100%;
+            padding: 1rem;
+            border: 2px dashed #d1d5db;
+            border-radius: 12px;
+            background: #f9fafb;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .file-input-wrapper input[type="file"]:hover {
+            border-color: #667eea;
+            background: #f3f4f6;
+        }
+        
+        .file-input-wrapper input[type="file"]::file-selector-button {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            margin-right: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .file-input-wrapper input[type="file"]::file-selector-button:hover {
+            transform: scale(1.02);
+        }
+        
+        .btn-submit {
+            width: 100%;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 1rem;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
+        }
+        
+        .btn-submit:active {
+            transform: translateY(0);
+        }
+        
+        .required-star {
+            color: #ef4444;
+            margin-left: 2px;
+        }
+        
+        .icon {
+            display: inline-block;
+            margin-right: 0.5rem;
+        }
+        
+        @media (max-width: 640px) {
+            .form-body {
+                padding: 1.25rem;
+            }
+            
+            .form-header {
+                padding: 1.5rem;
+            }
+            
+            .form-header h1 {
+                font-size: 1.25rem;
+            }
+            
+            .input-group {
+                flex-direction: column;
+            }
+            
+            .radio-group,
+            .checkbox-group {
+                flex-direction: column;
+            }
+        }
+    </style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full">
+  <div class="min-h-full py-8 px-4 flex items-center justify-center">
+   <div class="form-container w-full max-w-2xl">
+    <div class="form-header">
+     <div class="flex items-center justify-center gap-3">
+      <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+      </svg>
+      <h1 id="form-title">Formulir Pendaftaran Siswa</h1>
+     </div>
+     <p class="text-white/80 mt-2 text-sm">Lengkapi data di bawah ini dengan benar</p>
+    </div>
+    <form class="form-body" id="registration-form"><!-- Nama -->
+     <div class="form-row"><label class="form-label"> <span class="icon">👤</span>Nama Calon Siswa<span class="required-star">*</span> </label> <input type="text" name="nama" class="form-input" placeholder="Masukkan nama lengkap" required>
+     </div><!-- Tempat/Tanggal Lahir -->
+     <div class="form-row"><label class="form-label"> <span class="icon">📅</span>Tempat/Tanggal Lahir </label>
+      <div class="input-group"><input type="text" name="tempatLahir" class="form-input" placeholder="Tempat lahir"> <input type="date" name="tanggal" class="form-input">
+      </div>
+     </div><!-- Agama -->
+     <div class="form-row"><label class="form-label"> <span class="icon">🙏</span>Agama </label> <select name="agama" class="form-select"> <option value="">-- Pilih Agama --</option> <option value="islam">Islam</option> <option value="kristen">Kristen</option> <option value="katolik">Katolik</option> <option value="budha">Budha</option> <option value="hindu">Hindu</option> </select>
+     </div><!-- Alamat -->
+     <div class="form-row"><label class="form-label"> <span class="icon">🏠</span>Alamat </label> <textarea name="alamat" class="form-textarea" placeholder="Masukkan alamat lengkap..."></textarea>
+     </div><!-- No Telp -->
+     <div class="form-row"><label class="form-label"> <span class="icon">📱</span>No Telp/HP </label> <input type="tel" name="telepon" class="form-input" placeholder="Contoh: 081234567890">
+     </div><!-- Jenis Kelamin -->
+     <div class="form-row"><label class="form-label"> <span class="icon">⚧</span>Jenis Kelamin </label>
+      <div class="radio-group"><label class="radio-item"> <input type="radio" name="jenisKelamin" value="pria"> <span>👨 Pria</span> </label> <label class="radio-item"> <input type="radio" name="jenisKelamin" value="wanita"> <span>👩 Wanita</span> </label>
+      </div>
+     </div><!-- Hobi -->
+     <div class="form-row"><label class="form-label"> <span class="icon">⭐</span>Hobi </label>
+      <div class="checkbox-group"><label class="checkbox-item"> <input type="checkbox" name="hobi" value="membaca"> <span>📚 Membaca</span> </label> <label class="checkbox-item"> <input type="checkbox" name="hobi" value="menulis"> <span>✍️ Menulis</span> </label> <label class="checkbox-item"> <input type="checkbox" name="hobi" value="olahraga"> <span>⚽ Olahraga</span> </label> <label class="checkbox-item"> <input type="checkbox" name="hobi" value="musik"> <span>🎵 Musik</span> </label>
+      </div>
+     </div><!-- Pas Foto -->
+     <div class="form-row"><label class="form-label"> <span class="icon">📷</span>Pas Foto </label>
+      <div class="file-input-wrapper"><input type="file" name="foto" accept="image/*">
+      </div>
+     </div><!-- Submit Button --> <button type="submit" class="btn-submit"> ✨ Daftar Sekarang </button>
+    </form>
+   </div>
+  </div><!-- Success Modal -->
+  <div id="success-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 hidden">
+   <div class="bg-white rounded-2xl p-8 max-w-md mx-4 text-center transform scale-95 opacity-0 transition-all duration-300" id="modal-content">
+    <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+     <svg class="w-10 h-10 text-green-500" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+     </svg>
+    </div>
+    <h2 class="text-2xl font-bold text-gray-800 mb-2">Pendaftaran Berhasil!</h2>
+    <p class="text-gray-600 mb-6">Data Anda telah berhasil dikirim. Kami akan menghubungi Anda segera.</p><button onclick="closeModal()" class="px-6 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-xl font-semibold hover:shadow-lg transition-all"> Tutup </button>
+   </div>
+  </div>
+  <script>
+        const defaultConfig = {
+            form_title: 'Formulir Pendaftaran Siswa',
+            primary_color: '#667eea',
+            secondary_color: '#764ba2',
+            text_color: '#374151',
+            background_color: '#f9fafb',
+            accent_color: '#ffffff'
+        };
+
+        async function onConfigChange(config) {
+            const title = document.getElementById('form-title');
+            if (title) {
+                title.textContent = config.form_title || defaultConfig.form_title;
+            }
+        }
+
+        function mapToCapabilities(config) {
+            return {
+                recolorables: [
+                    {
+                        get: () => config.primary_color || defaultConfig.primary_color,
+                        set: (value) => {
+                            config.primary_color = value;
+                            window.elementSdk.setConfig({ primary_color: value });
+                        }
+                    },
+                    {
+                        get: () => config.text_color || defaultConfig.text_color,
+                        set: (value) => {
+                            config.text_color = value;
+                            window.elementSdk.setConfig({ text_color: value });
+                        }
+                    }
+                ],
+                borderables: [],
+                fontEditable: undefined,
+                fontSizeable: undefined
+            };
+        }
+
+        function mapToEditPanelValues(config) {
+            return new Map([
+                ['form_title', config.form_title || defaultConfig.form_title]
+            ]);
+        }
+
+        // Initialize SDK
+        if (window.elementSdk) {
+            window.elementSdk.init({
+                defaultConfig,
+                onConfigChange,
+                mapToCapabilities,
+                mapToEditPanelValues
+            });
+        }
+
+        // Form submission
+        document.getElementById('registration-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            showModal();
+        });
+
+        function showModal() {
+            const modal = document.getElementById('success-modal');
+            const content = document.getElementById('modal-content');
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                content.classList.remove('scale-95', 'opacity-0');
+                content.classList.add('scale-100', 'opacity-100');
+            }, 10);
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('success-modal');
+            const content = document.getElementById('modal-content');
+            content.classList.remove('scale-100', 'opacity-100');
+            content.classList.add('scale-95', 'opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                document.getElementById('registration-form').reset();
+            }, 300);
+        }
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d63221023c7fd9a',t:'MTc3MjQ4MzE1MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
