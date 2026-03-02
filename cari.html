@@ -215,5 +215,107 @@
         </div>
       </div>
     </div>
+<script>
+//Source Code by www.javabitpro.com
+
+function doGet() {
+  return HtmlService.createTemplateFromFile('Index').evaluate()
+      .setTitle('Syam Digital')
+      .addMetaTag('viewport','width=device-width , initial-scale=1')
+        .setFaviconUrl('https://res.cloudinary.com/di8stbg60/image/upload/v1739029119/download_5_hbceaw.png'); 
+        
+}
+
+// Fungsi untuk mendapatkan data dari URL Spreadsheet eksternal
+function getExternalData(searchQuery) {
+  Logger.log(`Search Query: ${searchQuery}`);
+
+  // Pastikan searchQuery tidak kosong
+  if (!searchQuery) {
+    throw new Error("Search query is required.");
+  }
+
+  const mainSheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Data");
+  const data = mainSheet.getDataRange().getValues();
+  const results = [];
+
+  for (let i = 1; i < data.length; i++) {
+    const externalUrl = data[i][0];
+    const spreadsheetName = data[i][1];
+
+    if (!externalUrl) {
+      Logger.log(`Skipping row ${i} due to empty URL.`);
+      continue;
+    }
+
+    try {
+      Logger.log(`Accessing URL: ${externalUrl}`);
+      const externalSpreadsheet = SpreadsheetApp.openByUrl(externalUrl);
+      const externalSheet = externalSpreadsheet.getSheets()[0];
+      const externalData = externalSheet.getDataRange().getValues();
+
+      Logger.log(`Data retrieved from ${spreadsheetName}: ${externalData.length} rows`);
+
+      // Pastikan ada data di spreadsheet eksternal
+      if (externalData.length <= 1) {
+        Logger.log(`No data in spreadsheet: ${spreadsheetName}`);
+        continue;
+      }
+
+      // Ambil header dari baris pertama
+      const header = externalData[0];
+
+      // Filter data berdasarkan kolom A
+      const filteredData = externalData.filter((row, index) => {
+        if (!row[0]) {
+          return false;  // Skip jika kolom pertama kosong
+        }
+        return index > 0 && row[0].toString().toLowerCase().includes(searchQuery.toLowerCase());
+      });
+
+      // Proses kolom tertentu yang berformat tanggal dan URL
+      const processedData = filteredData.map((row) => {
+        return row.map((cell, colIndex) => {
+          // Jika kolom berisi tanggal (misalnya kolom kolom C maka row ke 2) (Kolom A adalah row 0)
+          if (colIndex === 2 && cell instanceof Date) {
+            return Utilities.formatDate(cell, Session.getScriptTimeZone(), "dd-MM-yyyy");
+          }
+
+          // Jika kolom berisi URL (misalnya kolom E maka row ke 4)(Kolom A adalah row 0)
+          if (colIndex === 4 && typeof cell === 'string' && isValidUrl(cell)) {
+            return `<a href="${cell}" target="_blank">${cell}</a>`;  // Membuat link yang dapat diklik
+          }
+
+          return cell;  // Biarkan kolom lainnya tetap seperti semula
+        });
+      });
+
+      Logger.log(`Filtered and formatted data count for ${spreadsheetName}: ${processedData.length}`);
+
+      if (processedData.length > 0) {
+        results.push({
+          spreadsheetName: spreadsheetName,
+          header: header,  // Menyimpan header dari spreadsheet eksternal
+          data: processedData,
+        });
+      }
+    } catch (e) {
+      Logger.log(`Error accessing ${externalUrl}: ${e.message}`);
+    }
+  }
+
+  return results;
+}
+
+// Fungsi untuk memvalidasi apakah sebuah string adalah URL
+function isValidUrl(url) {
+  const pattern = new RegExp('^(https?:\\/\\/)'); // Regex untuk validasi URL yang dimulai dengan http:// atau https://
+  return pattern.test(url);
+}
+function include(filename) {
+  return HtmlService.createHtmlOutputFromFile(filename)
+      .getContent();
+}
+</script>
   </body>
 </html>
