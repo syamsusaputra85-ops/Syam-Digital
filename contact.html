@@ -1,11 +1,98 @@
-<form name="contact" netlify>
-  <p>
-    <label>Name <input type="text" name="name" /></label>
-  </p>
-  <p>
-    <label>Email <input type="email" name="email" /></label>
-  </p>
-  <p>
-    <button type="submit">Send</button>
-  </p>
-</form>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Gaya dasar untuk merapikan tampilan */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* Container utama form */
+        .contact-form {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .contact-form h2 {
+            margin-top: 0;
+            color: #333;
+            text-align: center;
+        }
+
+        /* Merapikan label dan input */
+        .contact-form p {
+            margin-bottom: 20px;
+        }
+
+        .contact-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .contact-form input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box; /* Agar padding tidak merusak lebar */
+            transition: border-color 0.3s;
+        }
+
+        .contact-form input:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+
+        /* Gaya tombol kirim */
+        .contact-form button {
+            width: 100%;
+            padding: 12px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .contact-form button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="contact-form">
+        <h2>Hubungi Kami</h2>
+        <form name="contact" method="POST" data-netlify="true">
+            <p>
+                <label>Nama</label>
+                <input type="text" name="name" placeholder="Masukkan nama Anda" required />
+            </p>
+            <p>
+                <label>Email</label>
+                <input type="email" name="email" placeholder="nama@email.com" required />
+            </p>
+            <p>
+                <button type="submit">Kirim Pesan</button>
+            </p>
+        </form>
+    </div>
+
+</body>
+</html>
